@@ -1,25 +1,8 @@
 import './style.css'
 
- // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
-
-    // Array.prototype.map()
-    // 2. Give us an array of the inventors first and last names
-
-    // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
-
-    // Array.prototype.reduce()
-    // 4. How many years did all the inventors live all together?
-
-    // 5. Sort the inventors by years lived
-
-    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
-    // 7. sort Exercise
-    // Sort the people alphabetically by last name
+   
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
@@ -39,7 +22,8 @@ const inventors = [
   { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
 ];
 
-
+// Array.prototype.filter()
+    // 1. Filter the list of inventors for those who were born in the 1500's
 
 function BornIn1500(inventor){
   if(inventor.year >= 1500 & inventor.year <= 1600){
@@ -53,12 +37,104 @@ function BornIn1500(inventor){
   var oldPeople = inventors.filter(BornIn1500);
   console.log(oldPeople)
 
+  
+ 
+
+    // Array.prototype.map()
+    // 2. Give us an array of the inventors first and last names
+
   const fullNames = 
      inventors.map(inventor => `${inventor.first} ${inventor.last}`);
      console.log(fullNames)
 
+// Array.prototype.sort()
+    // 3. Sort the inventors by birthdate, oldest to youngest
 
 const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1)
 console.table(ordered)
 
-var totalYears = 0;
+// Array.prototype.reduce()
+    // 4. How many years did all the inventors live all together?
+
+
+const totalYears = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0)
+console.table(totalYears)
+
+  // 5. Sort the inventors by years lived
+  const oldest = inventors.sort(function(a,b)
+  {
+    const lastGuy = a.passed - a.year;
+    const nextGuy = b.passed - b.year;
+    return lastGuy > nextGuy ? -1 : 1;
+  });
+  console.table(oldest);
+
+  // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+
+const paris = [
+  "Boulevards of Paris",
+  "City walls of Paris",
+  "Thiers wall",
+  "Wall of Charles V",
+  "Wall of Philip II Augustus",
+  "City gates of Paris",
+  "Haussmann's renovation of Paris",
+  "Boulevards of the Marshals",
+  "Boulevard Auguste-Blanqui",
+  "Boulevard Barbès",
+  "Boulevard Beaumarchais",
+  "Boulevard de l'Amiral-Bruix",
+  "Boulevard Mortier",
+  "Boulevard Poniatowski",
+  "Boulevard Soult",
+  "Boulevard des Capucines",
+  "Boulevard de la Chapelle",
+  "Boulevard de Clichy",
+  "Boulevard du Crime",
+  "Boulevard du Général-d'Armée-Jean-Simon",
+  "Boulevard Haussmann",
+  "Boulevard de l'Hôpital",
+  "Boulevard des Italiens",
+  "Boulevard Lefebvre",
+  "Boulevard de la Madeleine",
+  "Boulevard de Magenta",
+  "Boulevard Malesherbes",
+  "Boulevard Marguerite-de-Rochechouart",
+  "Boulevard Montmartre",
+  "Boulevard du Montparnasse",
+  "Boulevard Raspail",
+  "Boulevard Richard-Lenoir",
+  "Boulevard Saint-Germain",
+  "Boulevard Saint-Michel",
+  "Boulevard de Sébastopol",
+  "Boulevard de Strasbourg",
+  "Boulevard du Temple",
+  "Boulevard Voltaire",
+  "Boulevard de la Zone",
+];
+
+
+  
+  const de = paris
+  .filter(paris => paris.includes('de'))
+  console.table(de);
+
+
+
+ // 7. sort Exercise
+    // Sort the people alphabetically by last name
+    const people = [
+      'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
+      'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
+      'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
+      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
+      'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
+    ];
+    
+    const alpha = people.sort(function(lastOne, nextOne){
+      
+    })
